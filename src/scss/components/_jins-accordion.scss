@@ -1,0 +1,78 @@
+@layer components {
+  .accordion {
+    $class: &;
+    --_item-padding-block: clamp(var(--spacing-100), 2cqi, var(--spacing-200));
+    --_item-padding-inline: clamp(var(--spacing-200), 2.5cqi, var(--spacing-300));
+  
+    display: flex;
+    flex-direction: column;
+    gap: var(--_space-between-items, 0);
+  
+    &__item {
+      display: grid;
+      transition: grid-template-rows var(--_accordion-transition-duration, var(--transition-duration));
+  
+      &:has([aria-hidden="true"]) {
+        grid-template-rows: min-content 0fr;
+      }
+  
+      &:has([aria-hidden="false"]) {
+        grid-template-rows: min-content 1fr;
+        
+        #{$class}__button {
+          border-top-color: var(--_accordion-btn-active-border-clr, var(--color-surface-container));
+          background-color: var( --_accordion-btn-active-bg-clr, var(--color-on-surface-container));
+          font-weight: 700;
+        }
+      }
+    }
+  
+    &__button {
+      all: unset;
+      cursor: pointer;
+  
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      border-top: var(--_accordion-btn-border-width, .125rem) solid var(--_accordion-btn-border-clr, var(--color-on-surface-container));
+      padding-block: var(--_item-padding-block);
+      padding-inline: var(--_item-padding-inline);
+      background-color: var(--_accordion-btn-bg-clr, var(--color-surface-container));
+      color: var(--_accordion-btn-text-clr, var(--color-on-surface-container));
+      font-size: var(--fs-400);
+  
+      transition: color var(--transition-duration), background-color var(--transition-duration);
+  
+      &:hover {
+        color: var(--_accordion-btn-hover-text-clr, var(--color-on-surface));
+      }
+  
+      &:focus {
+        outline: none;
+      }
+    }
+  
+    &__panel {
+      background-color: var(--_accordion-panel-bg-clr, var(--color-surface-container));
+      overflow: hidden;
+      padding-inline: var(--_item-padding-inline);
+      font-size: var(--fs-400);
+  
+      transition: padding var(--transition-duration);
+      
+      &:is([aria-hidden="false"]) {
+        transition: padding-block calc( var(--transition-duration) - 50ms );
+        padding-block: var(--_item-padding-inline);
+      }
+  
+      ul {
+        margin-left: var(--spacing-250);
+      }
+  
+      p {
+        margin-bottom: var(--spacing-125);
+      }
+    }
+  }
+}
