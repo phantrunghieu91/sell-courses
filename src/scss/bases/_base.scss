@@ -88,6 +88,10 @@
     color: var(--color-on-surface, #000);
   }
 
+  #main {
+    background-color: transparent;
+  }
+
   #content {
     container: content / inline-size;
   }
