@@ -13,7 +13,7 @@
     border-radius: var(--_border-radius, none);
 
     color: var(--_text-color, var(--color-on-surface));
-    font-size: var(--_font-size, var(--fs-400));
+    font-size: var(--_font-size, var(--fs-200));
     font-weight: var(--_font-weight, 400);
     line-height: var(--_line-height, 1.5);
     text-transform: var(--_text-transform, none);
@@ -21,7 +21,7 @@
     text-decoration: var(--_text-decoration, none);
 
     transition-duration: var(--_transition-duration, var(--transition-duration));
-    transition-property: background-color, color, border-color;
+    transition-property: background, color, border-color;
 
     &:is(:hover, :focus-visible) {
       background-color: var(--_background-color-hover, transparent);
@@ -92,6 +92,10 @@
       --_border-radius: .75rem;
     }
 
+    &[data-rounded=full] {
+      --_border-radius: 62.5rem;
+    }
+
     // ---- Colors
     // Each color modifier sets accent tokens (used by variants like outlined, slide-bg)
     // and solid-state tokens (background, text, hover) for the default filled appearance.
@@ -134,15 +138,31 @@
     }
 
     // ---- Variants (shape) — composable, each owns only its own properties
+    &[data-variant=link] {
+      --_padding-block: 0;
+      --_padding-inline: 0;
+      --_border-color: transparent;
+      --_border-color-hover: transparent;
+      --_background-color: transparent;
+      --_background-color-hover: transparent;
+      --_text-color: var( --_accent-color, var(--color-on-surface) );
+      --_text-color-hover: var(--_accent-color-hover, oklch( from var(--_color-on-surface) calc( l * 1.02 ) c h / 1 ) );
+    }
+
+    &[data-variant=filled] {
+      --_border-color: var(--_accent-color, var(--color-surface-dim));
+      --_border-color-hover: var(--_accent-color, var(--color-surface-dim));
+      --_background-color: var(--_accent-color-hover, var(--color-surface-dim));
+      --_background-color-hover: var(--_accent-color-hover, oklch( from var(--color-surface-dim) calc( l * 1.5 ) c h / 1 ));
+      --_text-color: var( --_on-accent-color, var(--color-on-surface-dim) );
+      --_text-color-hover: var(--_on-accent-color, var(--color-on-surface-dim) );
+    }
+
     &[data-variant=outline] {
       --_border-color: var(--_text-color, var(--color-on-surface));
       --_border-color-hover: var(--_accent-color, var(--color-on-surface));
       --_background-color-hover: var(--_accent-color, var(--color-on-surface));
       --_text-color-hover: var(--_on-accent-color, var(--wp--preset--color--white));
-    }
-
-    &[data-variant=pill] {
-      --_border-radius: 999px;
     }
 
     &[data-variant=slide-bg] {
@@ -177,6 +197,23 @@
       }
     }
 
+    &[data-variant=gradient] {
+      --_gradient-from: var(--color-surface-dim);
+      --_gradient-via: oklch( from var(--color-surface-dim) calc( l * 2) c h / 1 );
+      --_gradient-to: var(--color-surface-dim);
+      --_border-color: transparent;
+      --_border-color-hover: transparent;
+      --_text-color: var(--color-on-surface-dim);
+      --_text-color-hover: var(--color-on-surface-dim);
+      background: var(--_background-color, transparent) 
+        linear-gradient( 263deg, var(--_gradient-from), var(--_gradient-via), var(--_gradient-to) ) 
+        no-repeat 0% 100% / 200% 100%;
+
+        &:hover {
+          background-position: 100% 100%;
+        }
+    }
+
     // ---- outlined + color combinations
     // outlined always wins: transparent bg, accent-colored text and border.
     // Hover fills with the accent color.
@@ -204,6 +241,12 @@
         --_border-color-hover: var(--_accent-color);
         --_text-color-hover: var(--_on-accent-color);
       }
+    }
+
+    &[data-variant=gradient][data-theme=secondary] {
+      --_gradient-from: var(--color-secondary-gradient-from);
+      --_gradient-via: var(--color-secondary-gradient-to);
+      --_gradient-to: var(--color-secondary-gradient-from);
     }
   }
 }
