@@ -4,24 +4,28 @@
   :root {
     // Colors
     // --- Accent roles ---
-    --color-primary: #deb887;
-    --color-on-primary: #141414;
+    --color-primary: #001B3A;
+    --color-on-primary: var(--wp--preset--color--white);
+    --color-primary-container: #0E2846;
+    --color-on-primary-container: var(--wp--preset--color--white);
 
-    --color-secondary: #ff7e4e;
-    --color-on-secondary: #fff;
+    --color-secondary: #F27E1D;
+    --color-on-secondary: var(--wp--preset--color--white);
+    --color-secondary-gradient-from: var(--color-secondary);
+    --color-secondary-gradient-to: #f2a23d;
     
-    --color-surface: #fff;
-    --color-on-surface: #111;
+    --color-surface: #F2F1ED;
+    --color-on-surface: #1F1D1B;
     --color-on-surface-variant: #333;
-    --color-surface-container: #f3f4f6;
-    --color-on-surface-container: #6b7280;
+    --color-surface-dim: #1F1D1B;
+    --color-on-surface-dim: #F2F1ED;
 
     --color-success: #00fa9b;
-    --color-on-success: #111;
+    --color-on-success: #1F1D1B;
     --color-error: #b22323;
-    --color-on-error: #fff;
+    --color-on-error: var(--wp--preset--color--white);
     --color-gpw: #f7941d;
-    --color-on-gpw: #fff;
+    --color-on-gpw: var(--wp--preset--color--white);
 
 
     // Screen size
@@ -45,18 +49,16 @@
   }
 
   html > body {
-    background-color: var(--color-surface, var(--wp--preset--color--white));
-    color: var(--color-on-surface, #000);
     font-size: var(--fs-400);
     line-height: 1.5;
   }
 
   p {
-    margin-bottom: var(--spacing-100);
+    margin-block-end: var(--spacing-100);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: var(--color-on-surface);
+    color: var(--color-primary);
   }
 
   :where(ul, ol)[class] {
@@ -79,6 +81,11 @@
     &:hover {
       color: var(--color-secondary);
     }
+  }
+
+  #wrapper {
+    background-color: var(--color-surface, var(--wp--preset--color--white));
+    color: var(--color-on-surface, #000);
   }
 
   #content {
