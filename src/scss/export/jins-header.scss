@@ -1,0 +1,14 @@
+.header {
+  &.header {
+    container: header / inline-size;
+  }
+
+  .container {
+    padding-inline: 0;
+  }
+
+  .menu-item > a {
+    font-size: var(--fs-400);
+    text-transform: none;
+  }
+}
