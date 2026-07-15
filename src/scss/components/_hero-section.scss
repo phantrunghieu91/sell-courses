@@ -1,0 +1,100 @@
+@use '../abstracts/' as *;
+.hero {
+  padding-block: var(--spacing-625);
+  
+  color: var(--color-on-primary);
+
+  .section__inner {
+    padding-block: var(--_content-padding-block, 12.5rem 6.25rem);
+  }
+  
+  &__title, &__sub-title, &__description {
+    color: inherit;
+  }
+
+  &__title {
+    font-size: var(--fs-900);
+    line-height: 1;
+  }
+
+  &__description {
+    font-size: var(--fs-500);
+  }
+
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-250);
+    margin-block-end: var(--spacing-375);
+
+    .jins-button {
+      text-transform: uppercase;
+    }
+
+    .jins-button[data-variant=slide-gradient] {
+      --_background-color: var(--color-surface);
+      --_background-color-hover: var(--color-surface);
+      --_text-color: var(--color-on-surface);
+      --_border-color: var(--color-surface);
+    }
+  }
+
+  &__features {
+    --_border-width: .125rem;
+    --_icon-size: 1.875rem;
+
+    display: flex;
+  }
+
+  &__feature {
+    position: relative;
+    padding-block-start: var(--spacing-375);
+    padding-inline-end: var(--spacing-200);
+    border-top: var(--_border-width) solid oklch( 1 0 0 / .33 );
+
+    &-icon {
+      width: var(--_icon-size);
+      aspect-ratio: 1 / 1;
+    }
+
+    &-content {
+      margin-block-start: .75em;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: calc( -1 * var(--_border-width));
+      left: auto;
+      right: 0;
+      width: 0;
+      height: var(--_border-width);
+      background: linear-gradient(to left, var(--color-secondary-gradient-from), var(--color-secondary-gradient-to));
+
+      transition: left var(--transition-duration), width var(--transition-duration);
+    }
+
+    &:hover:before {
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  @include container-query( content, sm, gt ) {
+    --_content-padding-block: 10.625rem 4.375rem;
+  }
+
+  @include container-query( content, md ) {
+    &__features {
+      display: none;
+    }
+  }
+
+  @include container-query( content, lg, gt ) {
+    --_content-padding-block: 21.25rem 5.625rem;
+
+    .section__inner > :not(.hero__features) {
+      width: 50%;
+    }
+  }
+}
