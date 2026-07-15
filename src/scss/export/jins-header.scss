@@ -1,14 +1,83 @@
 .header {
   &.header {
     container: header / inline-size;
+    position: fixed;
+    top: calc(var(--_space-with-top-edge, 5rem) + var(--wp-admin--admin-bar--height, 0rem));
   }
 
   .container {
+    --_max-width: var(--screen-xl);
+    --_padding-inline: var(--spacing-250);
+  
     padding-inline: 0;
+    margin-inline: auto;
+    width: min(var(--_max-width), calc(100% - var(--_padding-inline) * 2));
   }
 
-  .menu-item > a {
+  .nav-icon > a {
+    color: var(--wp--preset--color--white);
+  }
+
+  .current-dropdown.has-dropdown:after {
+    border-bottom-color: var(--color-secondary);
+  }
+
+  :where(.nav > .menu-item > a) {
     font-size: var(--fs-400);
     text-transform: none;
+    color: var(--wp--preset--color--white);
+  }
+
+  :where(.current-menu-item > a, .nav > .menu-item > a:hover) {
+    color: var(--color-secondary);
+  }
+
+  .nav-dropdown {
+    background: transparent linear-gradient(to bottom right, var(--color-secondary-gradient-from), var(--color-secondary-gradient-to) ) no-repeat center / cover;
+
+    & > li.menu-item > a {
+      border: none;
+      color: var(--wp--preset--color--white);
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  @media screen and ( max-width: 850px ) {
+    &.header {
+      --wp-admin--admin-bar--height: 0rem;
+      --_space-with-top-edge: var(--spacing-375);
+    }
+  }
+
+  @include container-query( header, md, gt ) {
+    &-wrapper {
+      padding-inline: var(--spacing-375);
+    }
+  }
+
+  @include container-query-between(header, #{to-rem(850)}, #{to-rem(1660)}) {
+    .container {
+      --_padding-inline: var(--spacing-625);
+    }
+  }
+
+  @container (width > 1860px) {
+    .container {
+      --_padding-inline: 0;
+    }
+  }
+}
+
+// Global style for buttons with icon
+.jins-button {
+  .material-symbols-outlined {
+    transition: transform var(--_transition-duration, var(--transition-duration));
+  }
+
+  &:hover .material-symbols-outlined {
+    transform: rotate(45deg);
   }
 }
