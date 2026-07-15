@@ -240,7 +240,7 @@
       &:before {
         background: var(--_background-color, transparent) 
           linear-gradient( 263deg, var(--_gradient-from), var(--_gradient-via), var(--_gradient-to) ) 
-          no-repeat center / contain;
+          no-repeat 0% 100% / 200% 100%;
       }
     }
 
