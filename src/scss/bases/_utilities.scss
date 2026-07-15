@@ -73,10 +73,23 @@
   }
 
   .section__sub-title {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-50);
     color: var(--_color, var(--color-primary));
-    font-size: var(--fs-500);
+    font-size: var(--fs-100);
+    text-transform: uppercase;
     font-weight: bold;
+    margin-block-end: .75em;
+
+    &:before {
+      content: '';
+      background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImEiIGdyYWRpZW50VHJhbnNmb3JtPSJyb3RhdGUoOTApIj48c3RvcCBvZmZzZXQ9IjUlIiBzdG9wLWNvbG9yPSIjRjI3RTFEIi8+PHN0b3Agb2Zmc2V0PSI5NSUiIHN0b3AtY29sb3I9IiNmMmEyM2QiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMzUgMTUgMjAgODVoMTVsMTUtNzB6TTY1IDE1IDUwIDg1aDE1bDE1LTcweiIgZmlsbD0idXJsKCcjYScpIi8+PC9zdmc+")
+        no-repeat center / contain;
+      display: inline-block;
+      width: var(--fs-100);
+      aspect-ratio: 1;
+    }
 
     &--center {
       text-align: center;
@@ -88,21 +101,44 @@
   }
 
   section {
+    &:has(.bg-box) {
+      padding-inline: 0;
+    }
+
     .bg-box {
       margin-inline: auto;
       width: min(var(--_bg-box-max-width, 112.5rem), 100%);
-      border-radius: 1.875rem;
 
       background-attachment: fixed;
       background-repeat: no-repeat;
       background-position: bottom right;
       background-size: cover;
     }
+
+    @container ( width > 850px ) {
+      &:has(.bg-box) {
+        padding-inline: var(--spacing-375);
+
+        .section__inner {
+          --_section-inner-padding-inline: var(--spacing-625);
+        }
+      }
+
+      .bg-box {
+        border-radius: 1.875rem;
+      }
+    }
+
+    @container ( width > 1860px ) {
+      &:has(.bg-box) {
+        padding-inline: 0;
+      }
+    }
   }
   
   .section__inner {
     --_section-inner-max-width: var(--screen-xl);
-    --_section-inner-padding-inline: var(--spacing-125);
+    --_section-inner-padding-inline: var(--spacing-250);
   
     width: min(var(--_section-inner-max-width), calc(100% - var(--_section-inner-padding-inline) * 2));
     margin-inline: auto;
@@ -121,7 +157,7 @@
       background-color: oklch(from var(--color-surface-bright, #eee) l c h / 0.5);
     }
   
-    @container ( width > 1250px ) {
+    @container ( width > 1560px ) {
       &:not(&--full),
       &--full {
         --_section-inner-padding-inline: 0rem;
