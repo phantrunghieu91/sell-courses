@@ -2,6 +2,8 @@
   .jins-button {
     $class: &;
 
+    --_transition-duration: var(--transition-duration);
+
     padding: var(--_padding-block, var(--spacing-25)) var(--_padding-inline, var(--spacing-75));
     width: var(--_width, fit-content);
     min-height: unset;
@@ -20,7 +22,7 @@
     text-align: var(--_text-align, center);
     text-decoration: var(--_text-decoration, none);
 
-    transition-duration: var(--_transition-duration, var(--transition-duration));
+    transition-duration: var(--_transition-duration);
     transition-property: background, color, border-color;
 
     &:is(:hover, :focus-visible) {
@@ -165,11 +167,11 @@
       --_text-color-hover: var(--_on-accent-color, var(--wp--preset--color--white));
     }
 
-    &[data-variant=slide-bg] {
+    &:is([data-variant=slide-bg], [data-variant=slide-gradient]) {
+      --_background-color-hover: transparent;
       --_border-color: var(--_accent-color, var(--color-on-surface));
       --_text-color: var(--_accent-color, var(--color-on-surface));
       --_border-color-hover: var(--_accent-color-hover, var(--color-on-surface));
-      --_background-color-hover: transparent;
       --_text-color-hover: var(--_on-accent-color, var(--wp--preset--color--white));
 
       position: relative;
@@ -180,15 +182,15 @@
         z-index: 2;
       }
 
-      &::before {
+      &:before {
         content: '';
         position: absolute;
         z-index: 1;
         inset: 0;
-        background-color: var(--_slide-bg-clr, var(--_accent-color, var(--color-on-surface)));
+        width: 100%;
         transform: scaleX(0);
         transform-origin: right center;
-        transition: transform 300ms ease-in-out;
+        transition: transform var(--_transition-duration) ease-in-out;
       }
 
       &:is(:hover, :focus-visible)::before {
@@ -197,21 +199,49 @@
       }
     }
 
-    &[data-variant=gradient] {
+    &[data-variant=slide-bg] {
+      &::before {
+        background-color: var(--_slide-bg-clr, var(--_accent-color, var(--color-on-surface)));
+      }
+    }
+
+    &:is([data-variant=slide-gradient], [data-variant=gradient]) {
       --_gradient-from: var(--color-surface-dim);
       --_gradient-via: oklch( from var(--color-surface-dim) calc( l * 2) c h / 1 );
       --_gradient-to: var(--color-surface-dim);
+    }
+
+    &[data-variant=gradient] {
       --_border-color: transparent;
       --_border-color-hover: transparent;
-      --_text-color: var(--color-on-surface-dim);
-      --_text-color-hover: var(--color-on-surface-dim);
+      --_text-color: var(--_on-accent-color, var(--color-on-surface-dim));
+      --_text-color-hover: var(--_on-accent-color, var(--color-on-surface-dim));
+
       background: var(--_background-color, transparent) 
         linear-gradient( 263deg, var(--_gradient-from), var(--_gradient-via), var(--_gradient-to) ) 
         no-repeat 0% 100% / 200% 100%;
 
-        &:hover {
-          background-position: 100% 100%;
-        }
+      &:hover {
+        background-position: 100% 100%;
+      } 
+    }
+
+    &[data-variant=slide-gradient] {
+      --_background-color: transparent;
+
+      position: relative;
+      overflow: hidden;
+
+      span {
+        position: relative;
+        z-index: 2;
+      }
+
+      &:before {
+        background: var(--_background-color, transparent) 
+          linear-gradient( 263deg, var(--_gradient-from), var(--_gradient-via), var(--_gradient-to) ) 
+          no-repeat center / contain;
+      }
     }
 
     // ---- outlined + color combinations
@@ -243,7 +273,7 @@
       }
     }
 
-    &[data-variant=gradient][data-theme=secondary] {
+    &:is([data-variant=gradient], [data-variant=slide-gradient])[data-theme=secondary] {
       --_gradient-from: var(--color-secondary-gradient-from);
       --_gradient-via: var(--color-secondary-gradient-to);
       --_gradient-to: var(--color-secondary-gradient-from);

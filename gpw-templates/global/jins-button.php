@@ -12,7 +12,7 @@
  *   @type string       $position       Button alignment. 'center' | 'right'.
  *   @type string       $size           Button size. 'small' | 'medium' | 'large' ( Default: extra small, Different padding )
  *   @type string       $width          Button width. 'full' | 'full-width'.
- *   @type string       $variant        Variant. 'link' | 'filled' | 'outline' | 'slide-bg' | 'gradient'.
+ *   @type string       $variant        Variant. 'link' | 'filled' | 'outline' | 'slide-bg' | 'gradient' | 'slide-gradient'.
  *   @type string       $rounded        Rounded. 'small' | 'medium' | 'large' ( Border radius, default: none )
  *   @type string       $theme          Color theme. 'primary' | 'secondary' | 'tertiary'
  *   @type string       $icon_code      Material Symbols icon name.
