@@ -1,6 +1,6 @@
 @use '../abstracts/' as *;
 .hero {
-  padding-block: var(--spacing-625);
+  padding-block: 0;
   
   color: var(--color-on-primary);
 
@@ -88,6 +88,10 @@
     &__features {
       display: none;
     }
+  }
+
+  @include container-query( content, md, gt ) {
+    padding-block-start: var(--spacing-625);
   }
 
   @include container-query( content, lg, gt ) {
