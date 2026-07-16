@@ -45,6 +45,15 @@
     }
   }
 
+  .stuck .header-bg-color {
+    background-color: oklch( 1 0 0 / .75 );
+    backdrop-filter: blur( 1px );
+  }
+
+  .stuck :where(.nav > .menu-item:not(.current-menu-item) > a) {
+    color: var(--color-on-surface);
+  }
+
   @media screen and ( max-width: 850px ) {
     &.header {
       --wp-admin--admin-bar--height: 0rem;
