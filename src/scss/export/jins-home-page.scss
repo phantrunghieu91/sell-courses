@@ -25,11 +25,6 @@
     padding-inline: var(--spacing-375);
     position: relative;
 
-    img {
-      display: block;
-      object-fit: cover;
-    }
-
     &-big {
       position: relative;
       z-index: 1;
@@ -39,7 +34,6 @@
     }
 
     &-big-wrapper {
-      position: relative;
       clip-path: shape(
         from var(--_border-radius) 0,
         hline to calc(100% - var(--_border-radius)),
@@ -78,7 +72,6 @@
       font-weight: 700;
       letter-spacing: .6px;
       writing-mode: vertical-lr;
-
 
       rotate: 180deg;
     }
@@ -154,7 +147,9 @@
       width: 100%;
       aspect-ratio: 1;
       border-radius: 50%;
-      background-color: var(--color-secondary);
+      background: var(--color-secondary)
+      linear-gradient( to right, var(--color-secondary-gradient-from), var(--color-secondary-gradient-to) )
+      no-repeat center / contain;
 
       img {
         display: block;

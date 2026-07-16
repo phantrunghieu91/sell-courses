@@ -14,14 +14,10 @@ if( empty( $sectionData['title'] ) && empty( $sectionData['side_images']['big_im
   <div class="section__inner grid-repeated-cols">
   <?php if( !empty( $sectionData['side_images']['big_image'] ) ): ?>
     <aside class="about-us__images">
-      <div class="about-us__images-big-wrapper">
-        <?= wp_get_attachment_image( $sectionData['side_images']['big_image'], 'full', false, [ 'class' => 'about-us__images-big'] ) ?>
-      </div>
+      <?= jins_render_image( $sectionData['side_images']['big_image'], 'full', 'about-us__images-big-wrapper', [ 'class' => 'about-us__images-big'] ) ?>
     
     <?php if( !empty( $sectionData['side_images']['small_image'] ) ) {
-      echo sprintf( '<div class="about-us__images-small-wrapper">%s</div>',
-        wp_get_attachment_image( $sectionData['side_images']['small_image'], 'full', false, [ 'class' => 'about-us__images-small'] )
-      );
+      echo jins_render_image( $sectionData['side_images']['small_image'], 'full', 'about-us__images-small-wrapper', [ 'class' => 'about-us__images-small'] );
     } ?>
 
     <?php if( !empty( $sectionData['side_images']['vertical_text'] ) ) {
