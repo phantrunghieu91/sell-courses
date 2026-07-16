@@ -1,4 +1,195 @@
 @use '../components/hero-section';
 /* ================================= */
-/* =              Hero             = */
+/* =            About us           = */
 /* ================================= */
+.about-us {
+  padding-block-start: 6.25rem;
+
+  .section__inner {
+    --_grid-gap: 0;
+
+    align-items: center;
+  }
+
+  .section__title > span {
+    text-transform: uppercase;
+  }
+
+  &__images {
+    --_border-radius: 1.875rem;
+    --_cutout-width: 14rem;
+    --_cutout-height: 12.5rem;
+    --_space-between-imgs: var(--spacing-200);
+    --_small-img-aspect-ratio: 25/26;
+
+    padding-inline: var(--spacing-375);
+    position: relative;
+
+    img {
+      display: block;
+      object-fit: cover;
+    }
+
+    &-big {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 50 / 63;
+      border-radius: var(--_border-radius);
+    }
+
+    &-big-wrapper {
+      position: relative;
+      clip-path: shape(
+        from var(--_border-radius) 0,
+        hline to calc(100% - var(--_border-radius)),
+        arc to 100% var(--_border-radius) of var(--_border-radius) cw,
+        vline to calc( 100% - var(--_border-radius) - var(--_cutout-height)),
+        arc to calc(100% - var(--_border-radius)) calc(100% - var(--_cutout-height)) of var(--_border-radius) cw,
+        hline to calc( 100% + var(--_border-radius) - var(--_cutout-width)),
+        arc to calc(100% - var(--_cutout-width)) calc(100% - var(--_cutout-height) + var(--_border-radius)) of var(--_border-radius) ccw,
+        vline to calc( 100% - var(--_border-radius) ),
+        arc to calc(100% - var(--_border-radius) - var(--_cutout-width)) 100% of var(--_border-radius) cw,
+        hline to var(--_border-radius),
+        arc to 0 calc(100% - var(--_border-radius)) of var(--_border-radius) cw,
+        vline to var(--_border-radius),
+        arc to var(--_border-radius) 0 of var(--_border-radius) cw
+      );
+    }
+
+    &-small-wrapper {
+      position: absolute;
+      z-index: 2;
+      right: var(--_small-img-right, 0rem);
+      bottom: var(--_small-img-bottom, 1rem);
+    }
+
+    &-small {
+      aspect-ratio: var(--_small-img-aspect-ratio);
+      border-radius: calc(var(--_border-radius) - var(--_space-between-imgs));
+    }
+
+    &-vertical-text {
+      position: absolute;
+      bottom: var(--spacing-200);
+      left: var(--_vertical-text-left, var(--spacing-100));
+      margin-block: 0;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: .6px;
+      writing-mode: vertical-lr;
+
+
+      rotate: 180deg;
+    }
+  }
+
+  &__content {
+    ul {
+      list-style: none;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-100);
+
+      &::before {
+        content: '\e5ca';
+        display: block;
+
+        font-family: 'Material Symbols Outlined';
+        font-size: 1.5rem;
+        color: var(--color-secondary);
+      }
+    }
+  }
+
+  &__people {
+    --_avatar-size: 3.125rem;
+    --_overlay-size: 1.125rem;
+
+    &-list {
+      display: flex;
+      margin-block-end: var(--spacing-125);
+    }
+
+    &-item {
+      margin-block-end: 0;
+      width: var(--_avatar-size);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+
+      &:not(:first-child) {
+        margin-inline-start: calc( -1 * var(--_overlay-size));
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__icon-box {
+    --_icon-size: 3.125rem;
+    
+    margin-block-end: var(--spacing-500);
+    padding-block-end: var(--spacing-500);
+    border-bottom: .0625rem solid oklch( 0 0 0 / .2 );
+    
+    display: grid;
+    grid-template-areas: 'icon label' 'icon desc'; 
+    grid-template-columns: var(--_icon-size) minmax(0, 1fr);
+    grid-template-rows: repeat( 2, auto );
+    align-items: center;
+    gap: var(--spacing-25) var(--spacing-100);
+
+    &-icon {
+      grid-area: icon;
+      padding: var(--spacing-125);
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background-color: var(--color-secondary);
+
+      img {
+        display: block;
+      }
+    }
+
+    &-label {
+      grid-area: label;
+      font-size: var(--fs-500);
+    }
+
+    &-description {
+      grid-area: desc;
+    }
+  }
+
+  @include container-query( content, md ) {
+    &__images {
+      padding-block-end: 5rem;
+    }
+  }
+
+  @include container-query(content, md, gt) {
+    .section__inner {
+      --_grid-cols: 2;
+    }
+
+    &__images {
+      --_small-img-right: 3.75rem;
+      --_small-img-bottom: -15%;
+      --_cutout-width: 14rem;
+      --_cutout-height: 11.375rem;
+      --_vertical-text-left: var(--spacing-375);
+
+      padding-inline: 5rem 5.625rem;
+    }
+  }
+}
