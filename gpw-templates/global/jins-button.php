@@ -38,7 +38,7 @@ if ( !$buttonLabel ) {
 }
 
 // -- Link props
-$buttonUrl    = isset( $args['href'] ) && $args['href'] !== '' ?  esc_url( $args['href'] ) : 'javascript:void(0)';
+$buttonUrl    = isset( $args['href'] ) && $args['href'] !== '' && $args['href'] !== 'javascript:void(0);' ? esc_url( $args['href'] ) : 'javascript:void(0);';
 $buttonTarget = $args['target'] ?? '_self';
 
 // -- Icon
