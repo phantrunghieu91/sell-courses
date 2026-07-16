@@ -13,7 +13,7 @@ $bgImgID     = $sectionData['background_image'] ?? false;
     <div class="bg-box" style="background-image:url(<?= wp_get_attachment_image_url( $bgImgID, 'full' ) ?>);"></div>
 
   <?php endif ?>
-  <div class="section__inner">
+  <div class="section__inner" data-width="extra-large">
 
     <?php if( !empty( $sectionData['sub_title'] ) ): ?>
     <span class="hero__sub-title section__sub-title"><?= esc_html( $sectionData['sub_title'] ) ?></span>
