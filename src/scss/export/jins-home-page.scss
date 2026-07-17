@@ -34,21 +34,19 @@
     }
 
     &-big-wrapper {
-      clip-path: shape(
-        from var(--_border-radius) 0,
-        hline to calc(100% - var(--_border-radius)),
-        arc to 100% var(--_border-radius) of var(--_border-radius) cw,
-        vline to calc( 100% - var(--_border-radius) - var(--_cutout-height)),
-        arc to calc(100% - var(--_border-radius)) calc(100% - var(--_cutout-height)) of var(--_border-radius) cw,
-        hline to calc( 100% + var(--_border-radius) - var(--_cutout-width)),
-        arc to calc(100% - var(--_cutout-width)) calc(100% - var(--_cutout-height) + var(--_border-radius)) of var(--_border-radius) ccw,
-        vline to calc( 100% - var(--_border-radius) ),
-        arc to calc(100% - var(--_border-radius) - var(--_cutout-width)) 100% of var(--_border-radius) cw,
-        hline to var(--_border-radius),
-        arc to 0 calc(100% - var(--_border-radius)) of var(--_border-radius) cw,
-        vline to var(--_border-radius),
-        arc to var(--_border-radius) 0 of var(--_border-radius) cw
-      );
+      clip-path: shape(from var(--_border-radius) 0,
+          hline to calc(100% - var(--_border-radius)),
+          arc to 100% var(--_border-radius) of var(--_border-radius) cw,
+          vline to calc(100% - var(--_border-radius) - var(--_cutout-height)),
+          arc to calc(100% - var(--_border-radius)) calc(100% - var(--_cutout-height)) of var(--_border-radius) cw,
+          hline to calc(100% + var(--_border-radius) - var(--_cutout-width)),
+          arc to calc(100% - var(--_cutout-width)) calc(100% - var(--_cutout-height) + var(--_border-radius)) of var(--_border-radius) ccw,
+          vline to calc(100% - var(--_border-radius)),
+          arc to calc(100% - var(--_border-radius) - var(--_cutout-width)) 100% of var(--_border-radius) cw,
+          hline to var(--_border-radius),
+          arc to 0 calc(100% - var(--_border-radius)) of var(--_border-radius) cw,
+          vline to var(--_border-radius),
+          arc to var(--_border-radius) 0 of var(--_border-radius) cw);
     }
 
     &-small-wrapper {
@@ -115,7 +113,7 @@
       overflow: hidden;
 
       &:not(:first-child) {
-        margin-inline-start: calc( -1 * var(--_overlay-size));
+        margin-inline-start: calc(-1 * var(--_overlay-size));
       }
 
       img {
@@ -129,15 +127,15 @@
 
   &__icon-box {
     --_icon-size: 3.125rem;
-    
+
     margin-block-end: var(--spacing-500);
     padding-block-end: var(--spacing-500);
-    border-bottom: .0625rem solid oklch( 0 0 0 / .2 );
-    
+    border-bottom: .0625rem solid oklch(0 0 0 / .2);
+
     display: grid;
-    grid-template-areas: 'icon label' 'icon desc'; 
+    grid-template-areas: 'icon label' 'icon desc';
     grid-template-columns: var(--_icon-size) minmax(0, 1fr);
-    grid-template-rows: repeat( 2, auto );
+    grid-template-rows: repeat(2, auto);
     align-items: center;
     gap: var(--spacing-25) var(--spacing-100);
 
@@ -147,9 +145,7 @@
       width: 100%;
       aspect-ratio: 1;
       border-radius: 50%;
-      background: var(--color-secondary)
-      linear-gradient( to right, var(--color-secondary-gradient-from), var(--color-secondary-gradient-to) )
-      no-repeat center / contain;
+      background: var(--color-secondary) linear-gradient(to right, var(--color-secondary-gradient-from), var(--color-secondary-gradient-to)) no-repeat center / contain;
 
       img {
         display: block;
@@ -166,7 +162,7 @@
     }
   }
 
-  @include container-query( content, md ) {
+  @include container-query(content, md) {
     &__images {
       padding-block-end: 5rem;
     }
@@ -185,6 +181,119 @@
       --_vertical-text-left: var(--spacing-375);
 
       padding-inline: 5rem 5.625rem;
+    }
+  }
+}
+/* ================================= */
+/* =            Roadmap            = */
+/* ================================= */
+.roadmap {
+  --_icon-size: 4.375rem;
+  --_halo-size: min(45rem, 50%);
+  --_halo-thickness: min(4rem, 8%);
+
+  padding-block-start: 6.25rem;
+  color: var(--color-on-primary);
+
+  .bg-box {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-primary);
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: var(--_halo-size);
+      aspect-ratio: 1;
+      background-color: oklch( 1 0 0 / .2 );
+      translate: -20% 35%;
+
+      clip-path: shape(
+        evenodd from 50% 0,
+        arc to 50% 100% of 50% cw,
+        arc to 50% 0 of 50% cw,
+        move to 50% var(--_halo-thickness),
+        arc to 50% calc( 100% - var(--_halo-thickness) ) of var(--_halo-thickness) cw,
+        arc to 50% var(--_halo-thickness) of var(--_halo-thickness) cw,
+      );
+    }
+  }
+
+  .section__inner {
+    position: relative;
+    padding-block: 6.25rem;
+    display: grid;
+    row-gap: var(--spacing-500);    
+  }
+
+  .section__title, .section__sub-title {
+    --_color: var(--color-on-primary);
+  }
+
+  .section__title, .section__description {
+    margin-block-end: var(--spacing-400);
+  }
+
+  &__title-wrapper > .jins-button {
+    text-transform: uppercase;
+  }
+
+  &__main {
+    container-type: inline-size;
+  }
+
+  &__item-list {
+    @container (width > 640px) {
+      --_grid-cols: 2;
+      --_grid-gap: var(--spacing-750) var(--spacing-375);
+    }
+  }
+
+  &__item {
+    &-icon {
+      padding: calc( var(--_icon-size) / 4 );
+      margin-block-end: var(--spacing-200);
+      width: var(--_icon-size);
+      height: var(--_icon-size);
+      border-radius: 50%;
+      background: var(--color-secondary) 
+        linear-gradient(to right, var(--color-secondary-gradient-from), var(--color-secondary-gradient-to)) 
+        no-repeat center / cover;
+
+      img {
+        display: block;
+      }
+    }
+
+    &-label {
+      color: inherit;
+      font-size: var(--fs-500);
+      font-weight: 600;
+      line-height: 1.35;
+    }
+  }
+
+  &__contact {
+    margin-block-start: var(--spacing-250);
+    padding-block-start: var(--spacing-250);
+    border-top: .0625rem solid oklch( 1 0 0 / .2 );
+  }
+
+  @include container-query(content, md, gt) {
+    .section__inner {
+      grid-template-columns: 44% 1fr;
+    }
+
+    &__title-wrapper {
+      padding-inline: 0 var(--spacing-625);
+      position: relative;
+
+      &-inner {
+        position: sticky;
+        top: calc(var(--spacing-250) + var(--flatsome-scroll-padding-top));
+      }
     }
   }
 }
