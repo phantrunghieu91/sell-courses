@@ -31,7 +31,7 @@ if( empty( $sectionData['title'] ) && empty( $sectionData['side_images']['big_im
     <?php endif ?>
       
     <?php if( !empty( $sectionData['title'] ) ): ?>
-      <h1 class="section__title"><?= wp_kses_post( $sectionData['title'] ) ?></h1>
+      <h2 class="section__title"><?= wp_kses_post( $sectionData['title'] ) ?></h2>
     <?php endif ?>
       
     <?php if( !empty( $sectionData['content'] ) ): ?>
