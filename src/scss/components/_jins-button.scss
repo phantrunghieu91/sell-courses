@@ -61,7 +61,7 @@
 
     // ---- Size: Default is extra small
     &[data-size=small] {
-      --_padding-block: var(--spacing-100);
+      --_padding-block: var(--spacing-75);
       --_padding-inline: var(--spacing-125);
       --_font-size: var(--fs-400);
     }
