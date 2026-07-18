@@ -1,5 +1,5 @@
 @layer components {
-  .accordion {
+  .jins-accordion {
     $class: &;
     --_item-padding-block: clamp(var(--spacing-100), 2cqi, var(--spacing-200));
     --_item-padding-inline: clamp(var(--spacing-200), 2.5cqi, var(--spacing-300));
