@@ -304,7 +304,7 @@
 .faqs {
   --_avatar-size: 3.125rem;
   --_space-between-avatar: var(--spacing-200);
-  padding-block: 6.25rem;
+  padding-block: 6.25rem 0;
 
   .section__inner {
     display: grid;
@@ -379,10 +379,12 @@
     --_card-thumbnail-aspect-ratio: 4/3;
     --_card-thumbnail-border-radius: 1.25rem;
 
+    margin-block-end: 0;
+
     &:has( + .jins-card ) {
-      margin-block-end: var(--spacing-250);
-      padding-block-end: var(--spacing-250);
-      border-bottom: .0625rem solid oklch(0 0 0 / .25);
+      margin-block-end: var(--spacing-375);
+      padding-block-end: var(--spacing-375);
+      border-bottom: .0625rem solid oklch(0 0 0 / .2 );
     }
   }
 
