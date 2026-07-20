@@ -8,7 +8,7 @@ class CompanyInfo {
   private static CompanyInfo $instance;
   private string $address;
   private string $email;
-  private string $phone;
+  private array $phones;
   private array $socials;
   public static function getInstance(): CompanyInfo {
     if( !isset( self::$instance ) ) {
@@ -27,14 +27,14 @@ class CompanyInfo {
     $companyInfo   = get_field( 'company_information', 'gpw_settings' );
     $this->address = $companyInfo['address']      ?? '';
     $this->email   = $companyInfo['email']        ?? '';
-    $this->phone   = $companyInfo['phone_number'] ?? '';
+    $this->phones  = $companyInfo['phone_number'] ?? '';
     $this->socials = $companyInfo['social']       ?? [];
   }
   public function getAddress() {
     return $this->address;
   }
   public function getPhoneNumber() {
-    return $this->phone;
+    return $this->phones;
   }
   public function getEmail() {
     return $this->email;
