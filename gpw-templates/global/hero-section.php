@@ -4,8 +4,9 @@
  * * Template: Global - Hero section
  */
 use gpweb\inc\base\Utilities as Utils;
-$sectionData = get_field( 'hero' );
-$bgImgID     = $sectionData['background_image'] ?? false;
+$displayBreadcrumbs = $args['display_breadcrumbs'] ?? false;
+$sectionData        = get_field( 'hero' );
+$bgImgID            = $sectionData['background_image'] ?? false;
 ?>
 <section class="hero pile">
   <?php if( !empty( $bgImgID ) ): ?>
@@ -22,6 +23,12 @@ $bgImgID     = $sectionData['background_image'] ?? false;
     <?php if( !empty( $sectionData['title'] ) ): ?>
     <h1 class="hero__title section__title"><?= wp_kses_post( $sectionData['title'] ) ?></h1>
     <?php endif ?>
+
+    <?php if( true === $displayBreadcrumbs && function_exists('rank_math_the_breadcrumbs') ) {
+      echo '<div class="hero__breadcrumbs">';
+      rank_math_the_breadcrumbs();
+      echo '</div>';
+    } ?>
     
     <?php if( !empty( $sectionData['description'] ) ): ?>
     <div class="hero__description section__description"><?= wp_kses_post( $sectionData['description'] ) ?></div>
