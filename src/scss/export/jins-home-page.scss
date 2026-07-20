@@ -364,3 +364,45 @@
     }
   }
 }
+/* ================================= */
+/* =          Latest News          = */
+/* ================================= */
+.latest-news {
+  padding-block: 6.25rem;
+
+  .section__inner {
+    display: grid;
+  }
+
+  .jins-card {
+    --_card-thumbnail-width: minmax( 12.5rem, 43% );
+    --_card-thumbnail-aspect-ratio: 4/3;
+    --_card-thumbnail-border-radius: 1.25rem;
+
+    &:has( + .jins-card ) {
+      margin-block-end: var(--spacing-250);
+      padding-block-end: var(--spacing-250);
+      border-bottom: .0625rem solid oklch(0 0 0 / .25);
+    }
+  }
+
+  .jins-image-wrapper {
+    height: 100%;
+  }
+
+  @include container-query(content, md, gt) {
+    .section__inner {
+      grid-template-columns: 44% 1fr;
+    }
+
+    &__title-wrapper {
+      padding-inline: 0 var(--spacing-625);
+      position: relative;
+
+      &-inner {
+        position: sticky;
+        top: calc(var(--spacing-250) + var(--flatsome-scroll-padding-top));
+      }
+    }
+  }
+}

@@ -13,4 +13,6 @@ get_template_part( 'gpw-templates/home-page/roadmap-section' );
 
 get_template_part( 'gpw-templates/home-page/faqs-section' );
 
+get_template_part( 'gpw-templates/home-page/latest-news-section' );
+
 get_template_part( 'gpw-templates/global/footer' );
