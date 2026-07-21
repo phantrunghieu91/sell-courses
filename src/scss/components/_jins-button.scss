@@ -105,25 +105,25 @@
 
     &[data-theme=primary] {
       --_accent-color: var(--color-primary);
-      --_accent-color-hover: oklch( from var(--_accent-color) calc(l * 1.1) c h / 1 );
+      --_accent-color-hover: oklch( from var(--_accent-color) calc(l * 1.2) c h / 1 );
       --_on-accent-color: var(--color-on-primary);
       --_text-color: var(--color-on-primary);
       --_background-color: var(--color-primary);
       --_border-color: var(--color-primary);
-      --_background-color-hover: oklch( from var(--_accent-color) calc(l * 1.1) c h / 1 );
-      --_border-color-hover: oklch( from var(--_accent-color) calc(l * 1.1) c h / 1 );
+      --_background-color-hover: var(--_accent-color-hover);
+      --_border-color-hover: var(--_accent-color-hover);
       --_text-color-hover: var(--color-on-primary);
     }
 
     &[data-theme=secondary] {
       --_accent-color: var(--color-secondary);
-      --_accent-color-hover: oklch( from var(--_accent-color) calc(l * 1.1) c h / 1 );
+      --_accent-color-hover: oklch( from var(--_accent-color) calc( l * .8 ) c calc( h * .7 ) / 1 );
       --_on-accent-color: var(--color-on-secondary);
       --_text-color: var(--color-on-secondary);
       --_background-color: var(--color-secondary);
       --_border-color: var(--color-secondary);
-      --_background-color-hover: oklch( from var(--_accent-color) calc(l * 1.1) c h / 1 );
-      --_border-color-hover: oklch( from var(--_accent-color) calc(l * 1.1) c h / 1 );
+      --_background-color-hover: var(--_accent-color-hover);
+      --_border-color-hover: var(--_accent-color-hover);
       --_text-color-hover: var(--color-on-secondary);
     }
 
@@ -134,8 +134,8 @@
       --_text-color: var(--color-on-tertiary);
       --_background-color: var(--color-tertiary);
       --_border-color: var(--color-tertiary);
-      --_background-color-hover: oklch( from var(--_accent-color) calc(l * 1.1) c h / 1 );
-      --_border-color-hover: oklch( from var(--_accent-color) calc(l * 1.1) c h / 1 );
+      --_background-color-hover: var(--_accent-color-hover);
+      --_border-color-hover: var(--_accent-color-hover);
       --_text-color-hover: var(--color-on-tertiary);
     }
 
@@ -153,8 +153,8 @@
 
     &[data-variant=filled] {
       --_border-color: var(--_accent-color, var(--color-surface-dim));
-      --_border-color-hover: var(--_accent-color, var(--color-surface-dim));
-      --_background-color: var(--_accent-color-hover, var(--color-surface-dim));
+      --_border-color-hover: var(--_accent-color-hover, var(--color-surface-dim));
+      --_background-color: var(--_accent-color, var(--color-surface-dim));
       --_background-color-hover: var(--_accent-color-hover, oklch( from var(--color-surface-dim) calc( l * 1.5 ) c h / 1 ));
       --_text-color: var( --_on-accent-color, var(--color-on-surface-dim) );
       --_text-color-hover: var(--_on-accent-color, var(--color-on-surface-dim) );

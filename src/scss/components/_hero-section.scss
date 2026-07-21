@@ -15,6 +15,28 @@
   &__title {
     font-size: var(--fs-900);
     line-height: 1;
+
+    &:has( + .hero__breadcrumbs ) {
+      margin-block-end: var(--spacing-125);
+    }
+  }
+
+  &__breadcrumbs {
+    font-size: var(--fs-200);
+    font-weight: 700;
+    text-transform: uppercase;
+
+    a {
+      color: var(--color-on-primary);
+
+      &:hover {
+        color: var(--color-secondary);
+      }
+    }
+
+    .last {
+      color: var(--color-secondary);
+    }
   }
 
   &__description {
@@ -96,6 +118,10 @@
 
   @include container-query( content, lg, gt ) {
     --_content-padding-block: 21.25rem 5.625rem;
+
+    &:has(.hero__breadcrumbs) {
+      --_content-padding-block: 15rem 7.5rem;
+    }
 
     .section__inner > :not(.hero__features) {
       width: 50%;
