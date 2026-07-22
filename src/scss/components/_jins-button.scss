@@ -4,7 +4,7 @@
 
     --_transition-duration: var(--transition-duration);
 
-    padding: var(--_padding-block, var(--spacing-25)) var(--_padding-inline, var(--spacing-75));
+    padding: var(--_padding-block, 0) var(--_padding-inline, 0);
     width: var(--_width, fit-content);
     min-height: unset;
     margin: 0;
@@ -60,6 +60,11 @@
     }
 
     // ---- Size: Default is extra small
+    &[data-size=extra-small] {
+      --_padding-block: var(--spacing-25);
+      --_padding-inline: var(--spacing-75);
+    }
+
     &[data-size=small] {
       --_padding-block: var(--spacing-75);
       --_padding-inline: var(--spacing-125);
@@ -107,36 +112,24 @@
       --_accent-color: var(--color-primary);
       --_accent-color-hover: oklch( from var(--_accent-color) calc(l * 1.2) c h / 1 );
       --_on-accent-color: var(--color-on-primary);
-      --_text-color: var(--color-on-primary);
-      --_background-color: var(--color-primary);
-      --_border-color: var(--color-primary);
-      --_background-color-hover: var(--_accent-color-hover);
-      --_border-color-hover: var(--_accent-color-hover);
-      --_text-color-hover: var(--color-on-primary);
+      --_text-color: var(--_accent-color);
+      --_text-color-hover: var(--_accent-color-hover);
     }
 
     &[data-theme=secondary] {
       --_accent-color: var(--color-secondary);
       --_accent-color-hover: oklch( from var(--_accent-color) calc( l * .8 ) c calc( h * .7 ) / 1 );
       --_on-accent-color: var(--color-on-secondary);
-      --_text-color: var(--color-on-secondary);
-      --_background-color: var(--color-secondary);
-      --_border-color: var(--color-secondary);
-      --_background-color-hover: var(--_accent-color-hover);
-      --_border-color-hover: var(--_accent-color-hover);
-      --_text-color-hover: var(--color-on-secondary);
+      --_text-color: var(--_accent-color);
+      --_text-color-hover: var(--_accent-color-hover);
     }
 
     &[data-theme=tertiary] {
       --_accent-color: var(--color-tertiary);
       --_accent-color-hover: oklch( from var(--_accent-color) calc(l * 1.1) c h / 1 );
       --_on-accent-color: var(--color-on-tertiary);
-      --_text-color: var(--color-on-tertiary);
-      --_background-color: var(--color-tertiary);
-      --_border-color: var(--color-tertiary);
-      --_background-color-hover: var(--_accent-color-hover);
-      --_border-color-hover: var(--_accent-color-hover);
-      --_text-color-hover: var(--color-on-tertiary);
+      --_text-color: var(--_accent-color);
+      --_text-color-hover: var(--_accent-color-hover);
     }
 
     // ---- Variants (shape) — composable, each owns only its own properties
