@@ -30,3 +30,7 @@
     color: var(--color-error);
   }
 }
+
+.widget:last-child {
+  margin-block-end: 0;
+}
