@@ -1,0 +1,70 @@
+@use '../components/hero-section';
+@use '../components/jins-pagination';
+/* ================================= */
+/* =             Content           = */
+/* ================================= */
+.posts-content {
+  --_sidebar-width: 15.625rem;
+
+  padding-block: 6.25rem;
+
+  .section__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--spacing-375);
+  }
+
+  &__posts {
+    container-type: inline-size;
+
+  }
+
+  &__posts-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--_posts-per-row, 1), minmax(0, 1fr));
+    gap: var(--spacing-400) var(--spacing-200);
+
+    &:has( + .jins-page-pagination ) {
+      margin-block-end: var(--spacing-500);
+    }
+
+    @container ( width > 600px ) {
+      --_posts-per-row: 2;
+    }
+
+    @container ( width > 900px ) {
+      --_posts-per-row: 3;
+    }
+  }
+
+  .jins-card {
+    --_fixed-height: true;
+  }
+
+  .jins-image-wrapper {
+    border-radius: 1rem;
+  }
+
+  @include container-query( content, md, gt ) {
+    .section__inner {
+      grid-template-columns: minmax(0, 1fr) var(--_sidebar-width);
+    }
+  }
+}
+/* ================================= */
+/* =             Widgets           = */
+/* ================================= */
+.jins-sidebars {
+  position: relative;
+
+  &__inner {
+    position: sticky;
+    top: calc(var(--flatsome-scroll-padding-top) + var(--spacing-250));
+  }
+}
+
+.jins-sidebar {
+  background-color: var(--color-surface-bright);
+  border-radius: 1rem;
+  padding: var(--spacing-250);
+}
