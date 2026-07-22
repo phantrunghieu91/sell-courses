@@ -1,0 +1,42 @@
+@use '../components/hero-section';
+/* ================================= */
+/* =         Override Hero         = */
+/* ================================= */
+.hero {
+  &__meta-list {
+    display: flex;
+    gap: var(--spacing-250);
+  }
+
+  &__meta-item {
+    font-weight: 700;
+
+    a:not(:hover) {
+      color: var(--color-on-primary);
+    }
+  }
+
+  @include container-query( content, #{to-rem(1250)}, gt ) {
+    .section__inner>:not(.hero__features) {
+      width: 100%;
+    }
+  }
+}
+/* ================================= */
+/* =         Single content        = */
+/* ================================= */
+.single-content {
+  padding-block: 6.25rem;
+
+  &__thumbnail {
+    display: block;
+    width: min(calc( 100% - 2 * var(--_thumbnail-padding-inline, var(--spacing-250)) ), var(--screen-xl));
+    margin-inline: auto;
+    border-radius: 1.25rem;
+    margin-block-end: var(--spacing-500);
+  }
+
+  @include container-query( content, md, gt ) {
+    --_thumbnail-padding-inline: var(--spacing-375);
+  }
+}

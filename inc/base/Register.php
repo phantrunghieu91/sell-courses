@@ -75,6 +75,10 @@ class Register extends BaseController {
       $this->enqueueStyle( 'jins-category-post-page', time() );
     }
 
+    if( is_singular( 'post' ) ) {
+      $this->enqueueStyle( 'jins-single-post-page', time() );
+    }
+
     if( is_page( [ 45 ] ) ) {
       $this->enqueueStyle( 'jins-contact-page', time() );
     }

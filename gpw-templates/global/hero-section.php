@@ -6,12 +6,13 @@
 use gpweb\inc\base\Utilities as Utils;
 $currentObj         = get_queried_object();
 $displayBreadcrumbs = $args['display_breadcrumbs'] ?? false;
+$displayMeta        = $args['display_meta'] ?? false;
 $sectionData        = get_field( 'hero', $currentObj->post_type === 'page' ? $currentObj->ID : $currentObj );
-$bgImgID = $sectionData['background_image'] ?? 260;
+$bgImgID            = $sectionData['background_image'] ?? 260;
 $title              = !empty( $sectionData['title'] ) ?
-                        wp_kses_post( $sectionData['title'] ) : 
-                        sprintf( '<span>%s</span>', $currentObj->post_type === 'page' ? 
-                          ( is_home() ? get_the_title( get_option( 'page_for_posts' ) ) : get_the_title() ) : 
+                        wp_kses_post( $sectionData['title'] ) :
+                        sprintf( '<span>%s</span>', is_a( $currentObj, 'WP_Post' ) ?
+                          ( is_home() ? get_the_title( get_option( 'page_for_posts' ) ) : get_the_title() ) :
                           esc_html( $currentObj->name ) );
 ?>
 <section class="hero pile">
@@ -35,6 +36,23 @@ $title              = !empty( $sectionData['title'] ) ?
       rank_math_the_breadcrumbs();
       echo '</div>';
     } ?>
+
+    <?php if( true === $displayMeta && is_single() ) : ?>
+
+      <ul class="hero__meta-list">
+        <li class="hero__meta-item posted-date">
+          <i class="fa-regular fa-calendar-days"></i>
+          <span><?= esc_html( get_the_date( 'd/m/Y' ) ) ?></span>
+        </li>
+        <?php if( !empty( get_the_category() ) ) : ?>
+        <li class="hero__meta-item categories">
+          <i class="fa-solid fa-tag"></i>
+          <?php the_category(', ') ?>
+        </li>
+        <?php endif ?>
+      </ul>
+
+    <?php endif ?>
     
     <?php if( !empty( $sectionData['description'] ) ): ?>
     <div class="hero__description section__description"><?= wp_kses_post( $sectionData['description'] ) ?></div>
