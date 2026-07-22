@@ -4,9 +4,15 @@
  * * Template: Global - Hero section
  */
 use gpweb\inc\base\Utilities as Utils;
+$currentObj         = get_queried_object();
 $displayBreadcrumbs = $args['display_breadcrumbs'] ?? false;
-$sectionData        = get_field( 'hero' );
-$bgImgID            = $sectionData['background_image'] ?? false;
+$sectionData        = get_field( 'hero', $currentObj->post_type === 'page' ? $currentObj->ID : $currentObj );
+$bgImgID = $sectionData['background_image'] ?? 260;
+$title              = !empty( $sectionData['title'] ) ?
+                        wp_kses_post( $sectionData['title'] ) : 
+                        sprintf( '<span>%s</span>', $currentObj->post_type === 'page' ? 
+                          ( is_home() ? get_the_title( get_option( 'page_for_posts' ) ) : get_the_title() ) : 
+                          esc_html( $currentObj->name ) );
 ?>
 <section class="hero pile">
   <?php if( !empty( $bgImgID ) ): ?>
@@ -20,11 +26,11 @@ $bgImgID            = $sectionData['background_image'] ?? false;
     <span class="hero__sub-title section__sub-title"><?= esc_html( $sectionData['sub_title'] ) ?></span>
     <?php endif ?>
     
-    <?php if( !empty( $sectionData['title'] ) ): ?>
-    <h1 class="hero__title section__title"><?= wp_kses_post( $sectionData['title'] ) ?></h1>
+    <?php if( !empty( $title ) ): ?>
+    <h1 class="hero__title section__title"><?= $title ?></h1>
     <?php endif ?>
 
-    <?php if( true === $displayBreadcrumbs && function_exists('rank_math_the_breadcrumbs') ) {
+    <?php if( true === $displayBreadcrumbs && function_exists( 'rank_math_the_breadcrumbs' ) ) {
       echo '<div class="hero__breadcrumbs">';
       rank_math_the_breadcrumbs();
       echo '</div>';
