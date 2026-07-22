@@ -391,6 +391,16 @@
     height: 100%;
   }
 
+  @include container-query( content, sm ) {
+    .jins-card {
+      display: block;
+      
+      &__thumbnail {
+        margin-block-end: var(--spacing-200);
+      }
+    }
+  }
+
   @include container-query(content, md, gt) {
     .section__inner {
       grid-template-columns: 44% 1fr;
