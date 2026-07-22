@@ -35,7 +35,7 @@ $footerMain  = get_field( 'footer_main', 'gpw_settings' );
     <div class="footer__phone-wrapper">
       <h3 class="footer__title"><?= __( 'Contact', 'gpw' ) ?></h3>
       <?php if( !empty( $email ) ) : ?>
-        <a class="footer__email" href="mailto:<?= esc_attr( $email) ?>"><?= esc_html( $email ) ?></a>
+        <p class="footer__email"><a href="mailto:<?= esc_attr( $email) ?>"><?= esc_html( $email ) ?></a></p>
       <?php endif ?>
       <?php if( !empty( $phones ) ): ?>
         <?php foreach( $phones as $phone ): ?>
