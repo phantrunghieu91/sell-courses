@@ -8,7 +8,7 @@ $currentObj         = get_queried_object();
 $displayBreadcrumbs = $args['display_breadcrumbs'] ?? false;
 $displayMeta        = $args['display_meta'] ?? false;
 $sectionData        = get_field( 'hero', $currentObj->post_type === 'page' ? $currentObj->ID : $currentObj );
-$bgImgID            = $sectionData['background_image'] ?? 260;
+$bgImgID            = isset($sectionData['background_image']) && !empty($sectionData['background_image']) ? $sectionData['background_image'] : 260;
 $title              = !empty( $sectionData['title'] ) ?
                         wp_kses_post( $sectionData['title'] ) :
                         sprintf( '<span>%s</span>', is_a( $currentObj, 'WP_Post' ) ?
