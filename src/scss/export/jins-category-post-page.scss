@@ -37,11 +37,8 @@
   }
 
   .jins-card {
+    --_card-thumbnail-border-radius: 1rem;
     --_fixed-height: true;
-  }
-
-  .jins-image-wrapper {
-    border-radius: 1rem;
   }
 
   @include container-query( content, md, gt ) {
