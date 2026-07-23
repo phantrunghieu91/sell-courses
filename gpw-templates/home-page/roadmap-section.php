@@ -14,9 +14,9 @@ if( empty( $items ) ) {
 ?>
 <section class="roadmap pile">
   <div class="bg-box"></div>
-  <div class="section__inner" data-width="lg">
-    <aside class="roadmap__title-wrapper">
-      <div class="roadmap__title-wrapper-inner">
+  <div class="section__inner" data-width="large">
+    <aside class="section__title-wrapper">
+      <div class="section__title-wrapper-inner">
         <?php if( !empty( $sectionData['sub_title'] ) ): ?>
           <span class="section__sub-title"><?= esc_html( $sectionData['sub_title'] ) ?></span>
         <?php endif ?>

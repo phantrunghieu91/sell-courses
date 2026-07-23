@@ -18,8 +18,8 @@ $contact = $sectionData['contact_block'] ?? [];
 ?>
 <section class="faqs">
   <div class="section__inner" data-width="lg">
-    <aside class="roadmap__title-wrapper">
-      <div class="roadmap__title-wrapper-inner">
+    <aside class="section__title-wrapper">
+      <div class="section__title-wrapper-inner">
 
         <?php if( !empty( $sectionData['sub_title'] ) ): ?>
           <span class="section__sub-title"><?= esc_html( $sectionData['sub_title'] ) ?></span>
