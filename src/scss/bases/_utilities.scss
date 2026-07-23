@@ -135,6 +135,18 @@
       }
     }
   }
+
+  .section__title-wrapper {
+    @container ( width > 850px ) {
+      padding-inline: 0 var(--_space-between-vertically, var(--spacing-625));
+      position: relative;
+  
+      &-inner {
+        position: sticky;
+        top: calc(var(--spacing-250) + var(--flatsome-scroll-padding-top));
+      }
+    }
+  }
   
   .section__inner {
     --_section-inner-max-width: var(--screen-lg);
