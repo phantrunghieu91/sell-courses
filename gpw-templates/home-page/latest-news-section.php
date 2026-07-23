@@ -5,12 +5,20 @@
  */
 $sectionData = get_field( 'latest_news' );
 $posts       = get_posts( [
-  'numberposts' => 3,
+  'numberposts' => 5,
   'post_status' => 'publish',
 ] );
 if( empty( $posts ) ) {
   return;
 }
+$slideItems = [];
+foreach( $posts as $post ) {
+  ob_start();
+  setup_postdata( $post );
+  get_template_part( 'gpw-templates/post/post-card', null, [ 'has_read_more' => true ] );
+  $slideItems[] = ob_get_clean();
+}
+wp_reset_postdata();
 ?>
 <section class="latest-news">
   <div class="section__inner" data-width="lg">
@@ -29,12 +37,8 @@ if( empty( $posts ) ) {
     </div>
     <?php endif ?>
 
-    <div class="latest-news__posts">
-      <?php foreach( $posts as $post ) {
-        setup_postdata( $post );
-        get_template_part( 'gpw-templates/post/post-card', null, [ 'has_read_more' => true, 'orientation' => 'horizontal' ] );
-      } ?>
-      <?php wp_reset_postdata(); ?>
+    <div class="latest-news__carousel">
+      <?php get_template_part( 'gpw-templates/global/swiper-template', null, [ 'slide_items' => $slideItems, 'has_nav' => true ] ) ?>
     </div>
   </div>
 </section>
