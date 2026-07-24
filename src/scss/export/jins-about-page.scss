@@ -1,0 +1,68 @@
+@use '../components/hero-section';
+section:last-child {
+  padding-block-end: 6.25rem;
+}
+/* ================================= */
+/* =             Founder           = */
+/* ================================= */
+.founder {
+  padding-block-start: 6.25rem;
+
+  &__header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'sub-title' 'title' 'desc' 'button';
+    gap: 0 var(--spacing-300);
+    margin-block-end: var(--spacing-750);
+
+    .section__sub-title {
+      grid-area: sub-title;
+    }
+
+    .section__title {
+      grid-area: title;
+    }
+
+    .section__description {
+      grid-area: desc;
+    }
+
+    .jins-button {
+      --_text-transform: capitalize;
+      grid-area: button;
+      align-self: center;
+    }
+  }
+
+  &__achievement {
+    display: grid;
+    grid-template-columns: minmax( 0, 1fr );
+    gap: var(--spacing-375);
+  }
+
+  &__item {
+    &-image {
+      width: 100%;
+      aspect-ratio: 5/6;
+      border-radius: 1.25rem;
+      margin-block-end: var(--spacing-125);
+    }
+
+    &-label {
+      font-size: var(--fs-600);
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+
+  @include container-query( content, md, gt ) {
+    &__header {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: 'sub-title button' 'title button' 'desc button';
+    }
+
+    &__achievement {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}
