@@ -2,6 +2,10 @@
 section:last-child {
   padding-block-end: 6.25rem;
 }
+
+html:has( :popover-open ) {
+  overflow: hidden;
+}
 /* ================================= */
 /* =             Founder           = */
 /* ================================= */
@@ -63,6 +67,120 @@ section:last-child {
 
     &__achievement {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}
+/* ================================= */
+/* =         About Founder         = */
+/* ================================= */
+.about-founder {
+  padding-block-start: 6.25rem;
+
+  .section__inner {
+    padding-block: var(--_content-padding-block-start, 15.625rem) var(--_content-padding-block-end, 3.125rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'title-wrapper' 'video-btn' 'feature';
+  }
+
+  &__title-wrapper {
+    grid-area: title-wrapper;
+  }
+
+  .section__sub-title, .section__title, .section__description, &__feature-item , &__play-btn-wrapper > span {
+    color: var(--wp--preset--color--white);
+  }
+
+  .section__description {
+    font-size: clamp(1rem, 2cqi, 1.125rem);
+  }
+
+  &__play-btn-wrapper {
+    grid-area: video-btn;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-125);
+
+    & > span {
+      font-size: var(--fs-500);
+      font-weight: 500;
+    }
+  }
+
+  &__play-btn {
+    --_width: var(--_play-btn-size, 5rem);
+    --_border-radius: 50%;
+    aspect-ratio: 1;
+
+    display: grid;
+    place-items: center;
+
+    .fa-play {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__popover {
+    width: var(--_popover-width, 80%);
+    background: transparent;
+    border: none;
+
+    &::backdrop {
+      background-color: oklch( 0 0 0 / .5 );
+    }
+
+    &-video-wrapper {
+      width: 100%;
+      aspect-ratio: 16/9;
+
+      iframe, video {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-close-btn {
+      position: fixed;
+      top: var(--spacing-250);
+      right: var(--spacing-250);
+      width: var(--_popover-close-btn-size, 2.5rem);
+      aspect-ratio: 1;
+
+      display: grid;
+      place-items: center;
+      
+      background: var(--color-primary);
+      color: var(--color-on-primary);
+      border-radius: 50%;
+    }
+  }
+
+  &__feature-list {
+    grid-area: feature;
+    margin-block-start: var(--spacing-400);
+    padding-block-start: var(--spacing-500);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-250) var(--spacing-375);
+    border-top: 0.0625rem solid oklch( 1 0 0 / .25 );
+  }
+
+  &__feature-item {
+    flex: 1 0 0;
+    display: inline-flex;
+    gap: var(--spacing-125);
+  }
+
+  @include container-query( content, md, gt ) {
+    --_content-padding-block-start: 31.25rem;
+    --_content-padding-block-end: 6.25rem;
+    --_popover-width: 60%;
+
+    .section__inner {
+      grid-template-columns: 55% 1fr;
+      grid-template-areas: 'title-wrapper video-btn' 'feature feature';
     }
   }
 }

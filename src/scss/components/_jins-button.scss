@@ -209,7 +209,8 @@
       --_border-color-hover: transparent;
       --_text-color: var(--_on-accent-color, var(--color-on-surface-dim));
       --_text-color-hover: var(--_on-accent-color, var(--color-on-surface-dim));
-
+      
+      border: none;
       background: var(--_background-color, transparent) 
         linear-gradient( 263deg, var(--_gradient-from), var(--_gradient-via), var(--_gradient-to) ) 
         no-repeat 0% 100% / 200% 100%;

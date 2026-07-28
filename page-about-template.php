@@ -9,4 +9,6 @@ get_template_part( 'gpw-templates/global/hero-section', null, [ 'display_breadcr
 
 get_template_part( 'gpw-templates/about-page/founder-info-section' );
 
+get_template_part( 'gpw-templates/about-page/about-founder-section' );
+
 get_template_part( 'gpw-templates/global/footer' ); 
