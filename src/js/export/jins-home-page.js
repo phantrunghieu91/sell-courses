@@ -2,6 +2,29 @@ import JinsAccordion from '../components/jins-accordion';
 document.addEventListener('DOMContentLoaded', () => {
   new JinsAccordion();
 
+  const whyChooseUsCtrl = {
+    init() {
+      try {
+        const swiperEl = document.querySelector('.why-choose-us__carousel .swiper');
+        if( typeof Swiper === undefined ) {
+          throw new Error('Swiper library have NOT registered!')
+        }
+        if( !swiperEl ) {
+          throw new Error('Swiper element can NOT be found!');
+        }
+        new Swiper( swiperEl, {
+          navigation: {
+            nextEl: swiperEl.querySelector('.jins-swiper-nav-btn__next'),
+            prevEl: swiperEl.querySelector('.jins-swiper-nav-btn__prev'),
+          },
+        });
+      } catch (error) {
+        console.warn('WHY CHOOSE US ERROR: ', error);
+      }
+    }
+  };
+  whyChooseUsCtrl.init();
+
   const latestNewsCtrl = {
     init() {
       try {

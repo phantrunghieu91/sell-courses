@@ -291,6 +291,78 @@
 /* ================================= */
 /* =             Project           = */
 /* ================================= */
+.why-choose-us {
+  padding-block-start: 6.25rem;
+
+  .section__inner {
+    display: grid;
+    grid-template-columns: repeat(var(--_cols, 1 ), minmax(0, 1fr));
+    gap: var(--spacing-600) 0;
+  }
+
+  &__features {
+    display: grid;
+    grid-template-columns: repeat(var(--_features-per-row, 1), minmax(0, 1fr));
+    gap: var(--spacing-375) var(--spacing-250);
+    margin-block: var(--spacing-500);
+    padding-block-end: var(--spacing-375);
+    border-bottom: 0.0625rem solid oklch( 0 0 0 / .25 );
+  }
+
+  &__feature {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-250);
+    margin: 0;
+
+    &-number {
+      width: var(--_number-circle-size, 5rem);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background-color: var(--color-surface-bright);
+      outline: .125rem solid var(--color-secondary);
+      outline-offset: .625rem;
+
+      font-size: var(--_number-fs, 1.25rem);
+      font-weight: 700;
+    }
+  }
+
+  &__content {
+    ul {
+      margin-inline-start: var(--spacing-250);
+    }
+
+    li::marker {
+      content: '\e5ca';
+      font-family: "Material Symbols Outlined";
+      font-size: 1.5rem;
+    }
+  }
+
+  &__image > img {
+    border-radius: 1.25rem;
+  }
+
+  @include container-query( content, md, gt ) {
+    --_cols: 2;
+    --_features-per-row: 2;
+
+    &__carousel {
+      padding-inline-start: 3.125rem;
+    }
+
+    &__feature {
+      --_number-circle-size: 6.25rem;
+      --_number-fs: 2rem;
+    }
+  }
+}
+/* ================================= */
+/* =             Project           = */
+/* ================================= */
 .project {
   padding-block-start: 6.25rem;
 
@@ -306,13 +378,8 @@
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat( var(--_item-per-rows, 1), minmax(0, 1fr));
+    grid-template-columns: repeat( var(--_item-per-rows, 3), minmax(0, 1fr));
     gap: var(--_space-between-items, var(--spacing-125));
-
-    @container ( width > 550px ) {
-      --_item-per-rows: 2;
-      --_space-between-items: var(--spacing-250);
-    }
   }
 
   &__item {
