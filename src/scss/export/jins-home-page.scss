@@ -18,9 +18,9 @@
 
   &__images {
     --_border-radius: 1.875rem;
-    --_cutout-width: 14rem;
-    --_cutout-height: 12.5rem;
-    --_space-between-imgs: var(--spacing-200);
+    --_cutout-width: 12rem;
+    --_cutout-height: 10.5rem;
+    --_small-img-width: 12.5rem;
     --_small-img-aspect-ratio: 25/26;
 
     padding-inline: var(--spacing-375);
@@ -58,8 +58,9 @@
     }
 
     &-small {
+      width: var(--_small-img-width);
       aspect-ratio: var(--_small-img-aspect-ratio);
-      border-radius: calc(var(--_border-radius) - var(--_space-between-imgs));
+      border-radius: calc(var(--_border-radius) - .5rem);
     }
 
     &-vertical-text {
@@ -177,8 +178,9 @@
     &__images {
       --_small-img-right: 3.75rem;
       --_small-img-bottom: -15%;
-      --_cutout-width: 14rem;
-      --_cutout-height: 11.375rem;
+      --_small-img-width: 100%;
+      --_cutout-width: 15rem;
+      --_cutout-height: 12.325rem;
       --_vertical-text-left: var(--spacing-375);
 
       padding-inline: 5rem 5.625rem;
@@ -289,7 +291,7 @@
   }
 }
 /* ================================= */
-/* =             Project           = */
+/* =          Why choose us        = */
 /* ================================= */
 .why-choose-us {
   padding-block-start: 6.25rem;
@@ -383,18 +385,24 @@
   }
 
   &__item {
-    background-color: var(--color-surface-bright);
-    border-radius: 3rem;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-125);
+    &:has( .project__item-label ) {
+      background-color: var(--color-surface-bright);
+      border-radius: 3rem;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-125);
+
+      .project__item-logo {
+        --_logo-size: 5rem;
+        border-radius: 50%;
+      }
+    }
 
     &-logo {
       display: block;
-      width: var(--_logo-size, 5rem);
       aspect-ratio: 1;
-      border-radius: 50%;
+      width: var(--_logo-size, 100%);
     }
   }
 
