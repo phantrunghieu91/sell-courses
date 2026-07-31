@@ -44,7 +44,9 @@ if( empty( $projects ) ) {
         <?php foreach( $projects as $project ): if( empty( $project['logo'] ) ) continue; ?>
           <article class="project__item">
             <?= wp_get_attachment_image( $project['logo'], 'medium', false, [ 'class' => 'project__item-logo' ] ) ?>
+            <?php if( !empty( $project['label'] ) ) : ?>
             <span class="project__item-label"><?= esc_html( $project['label'] ) ?></span>
+            <?php endif ?>
           </article>
         <?php endforeach ?>
       </div>
