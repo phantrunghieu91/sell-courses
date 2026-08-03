@@ -113,6 +113,10 @@
       background-repeat: no-repeat;
       background-position: bottom right;
       background-size: cover;
+
+      @supports (-webkit-touch-callout: none) {
+        background-attachment: unset;
+      }
     }
 
     @media ( width > 850px ) {

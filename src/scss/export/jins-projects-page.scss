@@ -1,5 +1,5 @@
 .project {
-  --_logos-cols: 1;
+  --_logos-cols: 2;
   --_logos-gap: var(--spacing-250);
     
   padding-block-start: 6.25rem;
@@ -9,7 +9,7 @@
   }
 
   .bg-box {
-    background-color: var(--color-surface-dim);
+    background-color: var(--color-primary);
   }
 
   .section__inner {
@@ -19,7 +19,7 @@
   .section__title {
     font-size: var(--fs-700);
     font-weight: 700;
-    color: var(--color-on-surface-dim);
+    color: var(--color-on-primary);
     margin-block-end: var(--spacing-750);
   }
 
@@ -42,7 +42,7 @@
       .project__item-logo {
         display: block;
         width: auto;
-        height: 18.75rem;
+        height: var(--_item-with-label-height, 10rem);
       }
     }
 
@@ -65,12 +65,12 @@
     }
   }
 
-  @include container-query( content, sm, gt ) {
-    --_logos-cols: 2;
-  }
-
   @include container-query( content, md, gt ) {
     --_logos-cols: 3;
+
+    &__item {
+      --_item-with-label-height: 18.75rem;
+    }
   }
 
   @include container-query( content, xl ) {

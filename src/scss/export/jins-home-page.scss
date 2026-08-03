@@ -1,6 +1,12 @@
 @use '../components/jins-swiper';
 @use '../components/jins-accordion';
 /* ================================= */
+/* =             Global            = */
+/* ================================= */
+section[class]:last-child {
+  margin-block-end: 6.25rem;
+}
+/* ================================= */
 /* =            About us           = */
 /* ================================= */
 .about-us {
@@ -482,7 +488,7 @@
 .latest-news {
   --_slides-per-view: 1;
   --_space-between: var(--spacing-250);
-  padding-block: 6.25rem;
+  padding-block-start: 6.25rem;
 
   .jins-card {
     --_card-thumbnail-width: minmax( 12.5rem, 43% );
